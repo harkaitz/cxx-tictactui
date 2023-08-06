@@ -1,3 +1,5 @@
+PROJECT=cxx-tictactui
+VERSION=1.0.0
 DESTDIR =
 PREFIX  =/usr/local
 CXX     =c++
@@ -18,11 +20,12 @@ update:
 tictactoe$(EXE): main.cc $(SOURCES) $(HEADERS)
 	$(CXX) -o $@ main.cc $(SOURCES) $(FLAGS_PX)
 
-
-## -- license --
+## -- BLOCK:license --
 install: install-license
-install-license: LICENSE
-	@echo 'I share/doc/cxx-tictactui/LICENSE'
-	@mkdir -p $(DESTDIR)$(PREFIX)/share/doc/cxx-tictactui
-	@cp LICENSE $(DESTDIR)$(PREFIX)/share/doc/cxx-tictactui
-## -- license --
+install-license: 
+	mkdir -p $(DESTDIR)$(PREFIX)/share/doc/$(PROJECT)
+	cp LICENSE README.md $(DESTDIR)$(PREFIX)/share/doc/$(PROJECT)
+update: update-license
+update-license:
+	ssnip README.md
+## -- BLOCK:license --
